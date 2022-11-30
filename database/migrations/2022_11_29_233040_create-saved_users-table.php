@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('username');
             $table->string('email');
             $table->string('city');
-            $table->integer('phone');
+            $table->string('phone');
             $table->string('name_company');
-            $table->date('birthdate');
-            $table->string('picture');
+            $table->date('birthdate')->nullable();
+            $table->string('picture')->nullable();
             $table->timestamps();
         });
     }

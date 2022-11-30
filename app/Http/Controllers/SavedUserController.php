@@ -26,8 +26,6 @@ class SavedUserController extends Controller
     public function create()
     {
         //
-        $users = Saved_user::all();
-        return view('usersDatabase')->with('users', $users);
     }
 
     /**
@@ -38,7 +36,22 @@ class SavedUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new Saved_user();
+
+        $user->id = $request->get('id');
+        $user->name = $request->get('name');
+        $user->username = $request->get('username');
+        $user->email = $request->get('email');
+        $user->city = $request->get('city');
+        $user->phone = $request->get('phone');
+        $user->name_company = $request->get('name_company');
+
+        if(Saved_user::find($user->id)) {
+            return redirect('/')->with('error', 'User is already in the database');
+        }
+        $user->save();
+
+        return redirect('/')->with('success', 'User added correctly to the database');;
     }
 
     /**
