@@ -14,8 +14,8 @@ use App\Http\Controllers\SavedUserController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+  return view('usersDatatable');
+});
 
-Route::resource('/', SavedUserController::class);
+Route::resource('/users', SavedUserController::class);

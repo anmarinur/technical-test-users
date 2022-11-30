@@ -14,10 +14,13 @@ class SavedUserController extends Controller
      */
     public function index()
     {
-        //
-        // $datos = Saved_user::all();
-        // echo $datos;
-        return view('usersDatabase');
+        $users = Saved_user::all();
+        return view('usersDatabase')->with('users', $users);
+    }
+
+    public function database()
+    {
+        
     }
 
     /**
@@ -28,6 +31,8 @@ class SavedUserController extends Controller
     public function create()
     {
         //
+        $users = Saved_user::all();
+        return view('usersDatabase')->with('users', $users);
     }
 
     /**
