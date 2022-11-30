@@ -18,11 +18,6 @@ class SavedUserController extends Controller
         return view('usersDatabase')->with('users', $users);
     }
 
-    public function database()
-    {
-        
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -65,7 +60,8 @@ class SavedUserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Saved_user::find($id);
+        return view('userUpdate')->with('user', $user);
     }
 
     /**
@@ -77,7 +73,14 @@ class SavedUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = Saved_user::find($id);
+
+        $user->birthdate = $request->get('birthdate');
+        $user->picture = $request->get('picture');
+
+        $user->save();
+
+        return redirect('/users');
     }
 
     /**

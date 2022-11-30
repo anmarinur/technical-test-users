@@ -2,7 +2,7 @@
 
 @section('mainContent')
   <p class="text-center mt-5 fs-2 fw-bold text-primary">USERS FROM DATABASE</p>
-  <table class="table table-striped mt-5 w-75 mx-auto table-light rounded-3 overflow-hidden border border-dark">
+  <table class="table table-striped mt-5 w-75 mx-auto thead-dark table-light rounded-3 overflow-hidden border border-dark">
     <thead>
       <tr>
         <th scope="col">ID</th>
@@ -28,13 +28,21 @@
           <td>{{$user->phone}}</td>
           <td>{{$user->name_company}}</td>
           <td>
-            <input type="date" class="form-control" id="birthdate" aria-describedby="birthdateUser" placeholder="Enter a birthdate" value={{$user->birthdate}}>
+            @if($user->birthdate)
+              {{$user->birthdate}}
+            @else
+              ''
+            @endif
           </td>
           <td>
-            <input type="text" class="form-control" id="picture" aria-describedby="pictureUser" placeholder="Enter a picture link" value={{$user->picture}}>
+            @if($user->picture)
+              {{$user->picture}}
+            @else
+              No picture
+            @endif
           </td>
           <td>
-            <button type="button" class="btn btn-primary">Update</button>
+            <a href="/users/{{$user->id}}/edit" type="button" class="btn btn-primary">Update</a>
           </td>
         </tr>
       @endforeach
