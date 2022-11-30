@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Http;
 */
 
 Route::get('/', function () {
-  $users = Http::get('https://jsonplaceholder.typicode.com/users')->collect();
+  $users = Http::get('https://jsonplaceholder.typicode.com/users')->collect()->sortBy('name');
   return view('usersDatatable')->with('users', $users);
 });
 
