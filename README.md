@@ -7,10 +7,3 @@
 5. Create database: users_database
 6. run php artisan migrate
 7. run php artisan serve
-
-
-## Routes
-
-- Users from api and home: '/'
-- Users from database: '/users'
-- Update user: '/users/id/edit
