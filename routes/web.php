@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SavedUserController;
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,8 @@ use App\Http\Controllers\SavedUserController;
 */
 
 Route::get('/', function () {
-  return view('usersDatatable');
+  $users = Http::get('https://jsonplaceholder.typicode.com/users')->collect();
+  return view('usersDatatable')->with('users', $users);
 });
 
 Route::resource('/users', SavedUserController::class);
