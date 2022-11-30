@@ -15,8 +15,9 @@ class SavedUserController extends Controller
     public function index()
     {
         //
-        $datos = Saved_user::all();
-        echo $datos;
+        // $datos = Saved_user::all();
+        // echo $datos;
+        return view('usersDatabase');
     }
 
     /**
